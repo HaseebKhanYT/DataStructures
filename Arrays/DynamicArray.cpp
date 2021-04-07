@@ -29,10 +29,7 @@ public:
     void Reverse();
     void Swap(int *x, int *y);
     void SwapReverse();
-
-
 };
-
 void DynamicArray::Create()
 {
     length = 0;
@@ -277,17 +274,6 @@ void DynamicArray::SwapReverse()
     }
 
 }
-
-
-
-
-
-
-
-
-
-
-
 int main()   //Main Function
 {
     DynamicArray Arr;
