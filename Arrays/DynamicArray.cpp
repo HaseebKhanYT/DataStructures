@@ -290,7 +290,7 @@ int main()   //Main Function
     Arr.SwapReverse();
     Arr.Display();
 
-    cout<<"Search for 3 is found at index "<<Arr.BSearch(3)<<endl;
+    cout<<"\nSearch for 3 is found at index "<<Arr.BSearch(3)<<endl;
 
     return 0;
 }
