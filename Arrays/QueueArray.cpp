@@ -108,12 +108,16 @@ int main(int argc, char const *argv[])
     QA.Enqueue();
     QA.Enqueue();
     QA.Enqueue();
+    QA.Enqueue();
     QA.Display();
-    QA.Enqueue();
-    QA.Enqueue();
+    QA.Dequeue();
     QA.Dequeue();
     QA.Display();
     QA.Dequeue();
+    QA.Enqueue();
+    QA.Dequeue();
+    QA.Display();
+    QA.Enqueue();
     QA.Display();
     return 0;
 }
