@@ -24,7 +24,7 @@ QueueArray::QueueArray(/* args */)
     length = 0;
     front= -1;
     rear = -1;
-    cout<<"\nEnter the size of the Array";
+    cout<<"\nEnter the size of the Array:";
     cin>>size;
     A = new int[size];
 }
@@ -66,6 +66,7 @@ void QueueArray::Enqueue()
         rear++;
         cout<<"\nEnter the element:";
         cin>>A[rear];
+        length++;
     }
     
 }
@@ -80,6 +81,7 @@ void QueueArray::Dequeue()
     else
     {
         front++;
+        length--;
     }
 }
 
@@ -104,6 +106,8 @@ int main(int argc, char const *argv[])
     QueueArray QA;
     QA.Enqueue();
     QA.Enqueue();
+    QA.Enqueue();
+    QA.Enqueue();
     QA.Display();
     QA.Enqueue();
     QA.Enqueue();
@@ -111,7 +115,5 @@ int main(int argc, char const *argv[])
     QA.Display();
     QA.Dequeue();
     QA.Display();
-
-
     return 0;
 }
