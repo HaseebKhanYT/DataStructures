@@ -27,11 +27,10 @@ public:
     int RSum(int n);
     int Avg();
     void Reverse();
-    void Swap(int *x, int *y);
+    void Swap(int x, int y);
     void SwapReverse();
 };
-void DynamicArray::Create()
-{
+void DynamicArray::Create(){
     length = 0;
     size = 0;
     cout<<"Enter the Size of the Array: ";
@@ -141,9 +140,7 @@ int DynamicArray::BSearch(int key)
             h = m-1;
         }
     }
-    if(l>h)
-        return -1;
-    
+    return -1;
 }
 
 int DynamicArray::RBSearch(int l,int h, int key)
@@ -257,12 +254,12 @@ void DynamicArray::Reverse()
     
 }
 
-void DynamicArray::Swap(int *x, int *y)
+void DynamicArray::Swap(int x, int y)
 {
     int temp;
-    temp = *x;
-    *x = *y;
-    *y = temp;
+    temp = A[x];
+    A[x] = A[y];
+    A[y] = temp;
 }
 
 void DynamicArray::SwapReverse()
@@ -270,27 +267,183 @@ void DynamicArray::SwapReverse()
     int j;
     for(int i=0,j=length-1;i<j;i++,j--)
     {
-        Swap(&A[i],&A[j]);
+        Swap(i,j);
     }
 
 }
 int main()   //Main Function
 {
     DynamicArray Arr;
-    Arr.Create();
-    Arr.Display();
-    Arr.Add(10);
-    Arr.SortedInsert(3);
-    Arr.Display();
-    cout<<"\nThe sum of the elements is "<<Arr.RSum(Arr.length-1)<<endl;
-
-    cout<<"\nThe Min element is "<<Arr.Min();
-    cout<<"\nThe Max element is "<<Arr.Max()<<endl;
-    // Arr.Delete(2);
-    Arr.SwapReverse();
-    Arr.Display();
-
-    cout<<"\nSearch for 3 is found at index "<<Arr.BSearch(3)<<endl;
-
+    int choice = 0;
+    cout<<"******ENTER YOUR OPTION******"<<endl<<endl;
+    cout<<"1 Create dynamic array"<<endl;
+    cout<<"2 Display dynamic array"<<endl;
+    cout<<"3 Add element at the end"<<endl;
+    cout<<"4 Add element at a particular index"<<endl;
+    cout<<"5 Add element at sorted position"<<endl;
+    cout<<"6 Delete element at a given index"<<endl;
+    cout<<"7 Linear search for a key"<<endl;
+    cout<<"8 Iterative Binary search for a key"<<endl;
+    cout<<"9 Recursive Binary search for a key"<<endl;
+    cout<<"10 Get element at a given index"<<endl;
+    cout<<"11 Set the value at a given index"<<endl;
+    cout<<"12 Get maximum element in the array"<<endl;
+    cout<<"13 Get minimum element in the array"<<endl;
+    cout<<"14 Get sum(Iterative) of elements in the array"<<endl;
+    cout<<"15 Get sum(Recursive) of elements in the array"<<endl;
+    cout<<"16 Get Average of elements in the array"<<endl;
+    cout<<"17 Reverse the array the array"<<endl;
+    cout<<"18 Swap elements in the array at given indices"<<endl;
+    cout<<"29 Swap all consecutive elements in the array"<<endl;
+    cout<<"20 ******EXIT******"<<endl;
+    while(1){
+        cout<<"\n\nEnter your choice: ";
+        cin>>choice;
+        switch(choice){
+            case 1:{
+                Arr.Create();
+                break;
+            }
+            case 2:{
+                Arr.Display();
+                break;
+            }
+            case 3:{
+                int element;
+                cout<<"Enter element to be inserted at the end: ";
+                cin >> element;
+                Arr.Add(element);
+                break;
+            }
+            case 4:{
+                int index,element;
+                cout<<"Enter  index where you want to insert element: ";
+                cin>>index;
+                cout<<"Enter element you want to insert: ";
+                cin>>element;
+                Arr.Insert(index,element);
+                break;
+            }
+            case 5:{
+                int element;
+                cout<<"Enter element to be inserted at the sorted position: ";
+                cin >> element;
+                Arr.SortedInsert(element);
+                break;
+            }
+            case 6:{
+                int index;
+                cout<<"Enter index where you want to delete element: ";
+                cin>>index;
+                Arr.Delete(index);
+                break;
+            }
+            case 7:{
+                int key;
+                cout<<"Enter key you want to search for(Linear search): ";
+                cin>>key;
+                int index = Arr.LSearch(key);
+                if(index==-1){
+                    cout<<"Element not found in array"<<endl;
+                }else{
+                    cout<<"Element found at index "<<index<<endl;
+                }
+                break;
+            }
+            case 8:{
+                int key;
+                cout<<"Enter key you want to search for(Iterative Binary search): ";
+                cin>>key;
+                int index = Arr.BSearch(key);
+                if(index==-1){
+                    cout<<"Element not found in array"<<endl;
+                }else{
+                    cout<<"Element found at index "<<index<<endl;
+                }
+                break;
+            }
+            case 9:{
+                int key;
+                cout<<"Enter key you want to search for(Recursive Binary search): ";
+                cin>>key;
+                int index = Arr.RBSearch(0,Arr.length,key);
+                if(index==-1){
+                    cout<<"Element not found in array"<<endl;
+                }else{
+                    cout<<"Element found at index "<<index<<endl;
+                }
+                break;
+            }
+            case 10:{
+                int index;
+                cout<<"Enter index from where you want to get value: ";
+                cin>>index;
+                int element = Arr.Get(index);
+                if(index > Arr.length){
+                    cout<<"Index out of range"<<endl;
+                }else{
+                    cout<<"Element at index "<<index<<" is "<<element<<endl;
+                }
+                break;
+            }
+            case 11:{
+                int index,element;
+                cout<<"Enter index where you want to insert value: ";
+                cin >> index;
+                cout<<"Enter value you want to insert at index "<<index<<": "<<endl;
+                cin>>element;
+                Arr.Set(index,element);
+                break;
+            }
+            case 12:{
+                int max = Arr.Max();
+                cout<<"Maximum element in the array = "<<max<<endl;
+                break;
+            }
+            case 13:{
+                int min = Arr.Min();
+                cout<<"Minimum element in the array = "<<min<<endl;
+                break;
+            }
+            case 14:{
+                int sum = Arr.Sum();
+                cout<<"Sum of elements in the array(Iterative)= "<<sum<<endl;
+                break;
+            }
+            case 15:{
+                int sum = Arr.RSum(Arr.length);
+                cout<<"Sum of elements in the array(Recursive)= "<<sum<<endl;
+                break;
+            }
+            case 16:{
+                int avg = Arr.Avg();
+                cout<<"Average elements in the array = "<<avg<<endl;
+                break;
+            }
+            case 17:{
+                Arr.Reverse();
+                break;
+            }
+            case 18:{
+                int i1,i2;
+                cout<<"Enter indices where you want to swap elements"<<endl;
+                cin>>i1>>i2;
+                Arr.Swap(i1,i2);
+                break;
+            }
+            case 19:{
+                Arr.SwapReverse();
+                break;
+            }
+            case 20:{
+                exit(0);
+                break;
+            }
+            default:{
+                cout<<"Enter correct option"<<endl;
+                break;
+            }
+        }
+    }
     return 0;
 }
