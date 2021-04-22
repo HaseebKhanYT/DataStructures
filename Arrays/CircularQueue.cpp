@@ -26,7 +26,7 @@ CircularQueue::CircularQueue()
     length = 0;
     front = 0;
     rear = 0;
-    cout<<"\nEnter the size of the Queue";
+    cout<<"\nEnter the size of the Queue: ";
     cin>>size;
     A = new int[size];
 }
@@ -116,22 +116,49 @@ void CircularQueue::Display()
 
 int main(int argc, char const *argv[])
 {
-    CircularQueue CQ;
-    CQ.Enqueue();
-    CQ.Enqueue();
-    CQ.Enqueue();
-    CQ.Enqueue();
-    CQ.Enqueue();
-    CQ.Display();
-    CQ.Dequeue();
-    CQ.Dequeue();
-    CQ.Display();
-    CQ.Dequeue();
-    CQ.Enqueue();
-    CQ.Dequeue();
-    CQ.Display();
-    CQ.Enqueue();
-    CQ.Display();
-
+    CircularQueue cq;
+    cout<<"*****ENTER YOUR CHOICE*****"<<endl<<endl;
+    cout<<"1 Add elements to circular Queue"<<endl;
+    cout<<"2 Disaplay elements of circular Queue"<<endl;
+    cout<<"3 Delete element from circular Queue"<<endl;
+    cout<<"4 Check if circular Queue is empty"<<endl;
+    cout<<"5 Exit"<<endl;
+    int choice;
+    while(true){
+        cout<<"\n\nEnter your choice: ";
+        cin>>choice;
+        switch(choice){
+            case 1:{
+                cq.Enqueue();
+                break;
+            }
+            case 2:{
+                cq.Display();
+                break;
+            }
+            case 3:{
+                cq.Dequeue();
+                break;
+            }
+            case 4:{
+                int t = cq.isEmpty();
+                if(t==1){
+                    cout<<"\n Circular queue is empty"<<endl;
+                }else{
+                    cout<<"\n Circular queue is not empty"<<endl;
+                }
+                break;
+            }
+            case 5:{
+                cout<<"\n*****PROGRAM COMPLETE*****"<<endl;
+                exit(0);
+                break;
+            }
+            default:{
+                cout<<"Enter correct option"<<endl;
+                break;
+            }
+        }
+    }
     return 0;
 }
