@@ -58,13 +58,13 @@ void QueueArray::Enqueue()
 {
     if(isFull())
     {
-        cout<<"\nThe Queue is Full.";
+        cout<<"The Queue is Full.";
         return;
     }
     else
     {
         rear++;
-        cout<<"\nEnter the element:";
+        cout<<"Enter the element:";
         cin>>A[rear];
         length++;
     }
@@ -94,7 +94,7 @@ void QueueArray::Display()
     }
     else
     {
-        cout<<"\nThe Elements of the Queue are:\n";
+        cout<<"The Elements of the Queue are:\n";
         for(int i=front+1;i<=rear;i++)
         {
             cout<<A[i]<<" ";        }
@@ -103,21 +103,48 @@ void QueueArray::Display()
 
 int main(int argc, char const *argv[])
 {
-    QueueArray QA;
-    QA.Enqueue();
-    QA.Enqueue();
-    QA.Enqueue();
-    QA.Enqueue();
-    QA.Enqueue();
-    QA.Display();
-    QA.Dequeue();
-    QA.Dequeue();
-    QA.Display();
-    QA.Dequeue();
-    QA.Enqueue();
-    QA.Dequeue();
-    QA.Display();
-    QA.Enqueue();
-    QA.Display();
+    QueueArray qa;
+    cout<<"*****ENTER YOUR CHOICE*****"<<endl<<endl;
+    cout<<"1 Enqueue"<<endl;
+    cout<<"2 Dequeue"<<endl;
+    cout<<"3 Display Queue"<<endl;
+    cout<<"4 Check if queue is empty"<<endl;
+    cout<<"5 Exit"<<endl;
+    int choice;
+    while(1){
+        cout<<"\n\n Enter your choice: "; 
+        cin>>choice;
+        switch(choice){
+            case 1:{
+                qa.Enqueue();
+                break;
+            }
+            case 2:{
+                qa.Dequeue();
+                break;
+            }
+            case 3:{
+                qa.Display();
+                break;
+            }
+            case 4:{
+                if(qa.isEmpty()){
+                    cout<<"\nQueue is empty"<<endl;
+                }else{
+                    cout<<"\nQueue is not empty"<<endl;
+                }
+                break;
+            }
+            case 5:{
+                cout<<"\n \t*****PROGRAM COMPLETE\n"<<endl;
+                exit(0);
+                break;
+            }
+            default:{
+                cout<<"\nEnter correct choice"<<endl;
+                break;
+            }
+        }
+    }
     return 0;
 }
